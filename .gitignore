@@ -1,0 +1,17 @@
+# Public codec snapshot: add new files explicitly before publishing them.
+/*
+!/.gitignore
+!/.python-version
+!/README.md
+!/pyproject.toml
+!/smap-process.py
+!/smap/
+
+/smap/*
+!/smap/__init__.py
+!/smap/bitstream.py
+!/smap/cbook.py
+!/smap/cmap.py
+!/smap/config.py
+!/smap/pvq.py
+!/smap/utils.py

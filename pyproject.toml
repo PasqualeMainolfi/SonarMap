@@ -1,0 +1,16 @@
+[project]
+name = "sonarmap"
+version = "0.1.0"
+description = "A frequency constellation audio codec with residual vector quantization"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "h5py>=3.16.0",
+    "librosa>=0.11.0",
+    "matplotlib>=3.10.8",
+    "numpy>=2.0.0",
+    "scipy>=1.17.1",
+    "soundfile>=0.13.1",
+    "torch>=2.11.0",
+    "tqdm>=4.67.3",
+]

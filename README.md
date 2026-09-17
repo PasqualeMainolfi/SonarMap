@@ -4,6 +4,22 @@ SonarMap is an experimental audio codec built around **frequency constellations*
 
 This repository snapshot contains the codec and its command-line round trip. It does not include a trained model checkpoint, an audio dataset, or the work-in-progress Transformer generator.
 
+## Codec pipeline
+
+```mermaid
+graph TD
+    A[Input audio: WAV or MP3] --> B[Mono audio at 22,050 Hz]
+    B -->|STFT| C[Complex spectrogram]
+    C --> D[Peak constellations]
+    C --> E[Local complex patches: 13 × 5]
+    D -->|Deterministic scalar bins| F[Codec tokens]
+    E -->|24-stage patch RVQ| F
+    F -->|Pack: none or LZMA| G[Lossless bitstream]
+    G -->|Unpack and verify| H[Recovered tokens]
+    H -->|Detokenize and decode patches| I[Sparse complex canvas]
+    I -->|ISTFT| J[Reconstructed WAV]
+```
+
 ## Requirements
 
 - Python 3.13 and [uv](https://docs.astral.sh/uv/)
